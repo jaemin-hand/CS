@@ -11,7 +11,13 @@ public class HC2A_SensorService : IDisposable
 {
     private const int BaudRate = 19200;
     private const int TimeoutMilliseconds = 3000;
-    private const int ResponseWaitMilliseconds = 500;
+    private const int PollIntervalMilliseconds = 20;
+    // How many ms to check the buffer
+
+    private const int ResponseIdleMilliseconds = 50;
+    // If there is no data for a few ms after the last data reception,
+    // do you want to see it as response complete
+
     private const string ReadCommand = "{F99RDD}\r";
     private readonly string _portName;
     private readonly SerialPort _serialPort;
@@ -54,6 +60,35 @@ public class HC2A_SensorService : IDisposable
         _serialPort.Dispose();
     }
 
+    private string WaitForResponse()
+    {
+        var startedAt = DateTime.UtcNow;
+        var lastReceivedAt = DateTime.UtcNow;
+        var response = string.Empty;
+        var hasReceivedAnyData = false;
+
+        while ((DateTime.UtcNow - startedAt).TotalMilliseconds < TimeoutMilliseconds)
+        {
+            string chunk = _serialPort.ReadExisting();
+
+            if (!string.IsNullOrEmpty(chunk))
+            {
+                response += chunk;
+                hasReceivedAnyData = true;
+                lastReceivedAt = DateTime.UtcNow;
+            }
+
+            if (hasReceivedAnyData && (DateTime.UtcNow - lastReceivedAt).TotalMilliseconds >= ResponseIdleMilliseconds)
+            {
+                return response;
+            }
+
+            Thread.Sleep(PollIntervalMilliseconds);
+        }
+
+        throw new TimeoutException("No complete response received from HC2A sensor.");
+    }
+
     public HC2A_Reading Read()
     {
         if (!_serialPort.IsOpen)
@@ -65,14 +100,8 @@ public class HC2A_SensorService : IDisposable
 
         _serialPort.Write(ReadCommand);
 
-        Thread.Sleep(ResponseWaitMilliseconds);
+        string response = WaitForResponse();
 
-        string response = _serialPort.ReadExisting();
-
-        if (string.IsNullOrWhiteSpace(response))
-        {
-            throw new TimeoutException("No response received from HC2A sensor.");
-        }
         return HC2A_ResponseParser.Parse(response);
     }
 
