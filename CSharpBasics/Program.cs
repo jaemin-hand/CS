@@ -64,6 +64,18 @@ try
         }
 
         count++;
+
+        if (reading.Humidity > threshold.HumidityMax || reading.Humidity < threshold.HumidityMin)
+        {
+            alarmResult = alarmResult with { IsHumidityAlarm = true };
+            alarmResult = alarmResult with { HasAlarm = true };
+        }
+        else if (reading.Temperature > threshold.TemperatureMax || reading.Temperature < threshold.HumidityMin)
+        {
+            alarmResult = alarmResult with { IsTemperatureAlarm = true};
+            alarmResult = alarmResult with { HasAlarm = true };
+        }
+        
     }
 }
 catch (OperationCanceledException)
