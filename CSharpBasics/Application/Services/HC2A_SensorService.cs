@@ -75,7 +75,7 @@ public class HC2A_SensorService : IDisposable
             {
                 response += chunk;
                 hasReceivedAnyData = true;
-                lastReceivedAt = DateTime.UtcNow;
+                lastReceivedAt = DateTime.UtcNow; 
             }
 
             if (hasReceivedAnyData && (DateTime.UtcNow - lastReceivedAt).TotalMilliseconds >= ResponseIdleMilliseconds)

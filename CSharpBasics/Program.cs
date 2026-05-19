@@ -1,6 +1,37 @@
-﻿using CSharpBasics.Application.Services;
+﻿using System.Runtime.CompilerServices;
+using CSharpBasics.Application.Services;
+using CSharpBasics.Domain.Models;
 
 using var sensorService = new HC2A_SensorService("COM4");
+
+var threshold = new HC2A_Threshold(
+    30,
+    60,
+    20,
+    30
+);
+
+var alarmResult = new HC2A_AlarmResult(
+    false,
+    false,
+    false,
+    "Normal"
+);
+
+Console.WriteLine($"Humidity range: {threshold.HumidityMin} ~ {threshold.HumidityMax}");
+Console.WriteLine($"Temperature range: {threshold.TemperatureMin} ~ {threshold.TemperatureMax}");
+
+Console.WriteLine($"Alarm: {alarmResult.HasAlarm}");
+Console.WriteLine($"Alarm Message: {alarmResult.Message}");
+
+using var cts = new CancellationTokenSource();
+
+_ = Task.Run(() =>
+{
+    Console.WriteLine("Press Enter to stop.");
+    Console.ReadLine();
+    cts.Cancel();
+});
 
 try
 {
@@ -8,18 +39,36 @@ try
     
     Console.WriteLine($"IsOpen: {sensorService.IsOpen}");
 
-    for (int i = 0; i < 10; i++)
+    TimeSpan sampleInterval = TimeSpan.FromSeconds(1);
+    DateTimeOffset nextRunAt = DateTimeOffset.UtcNow;
+
+    int count = 0;
+    while(!cts.Token.IsCancellationRequested)
     {
+        nextRunAt += sampleInterval;
+
         var reading = await sensorService.ReadAsync();
 
-        Console.WriteLine($"{i + 1} 번째 read");
+        Console.WriteLine($"{count + 1}번째 read");
         Console.WriteLine($"Humidity: {reading.Humidity}");
         Console.WriteLine($"Temperature: {reading.Temperature}");
         Console.WriteLine($"Measure: {reading.Timestamp}");
         Console.WriteLine($"RawResponse: {reading.RawResponse}");
+        Console.WriteLine();
 
-        await Task.Delay(500);
+        TimeSpan delay = nextRunAt - DateTimeOffset.UtcNow;
+
+        if (delay > TimeSpan.Zero)
+        {
+            await Task.Delay(delay, cts.Token);
+        }
+
+        count++;
     }
+}
+catch (OperationCanceledException)
+{
+    Console.WriteLine("Sampling stopped.");
 }
 catch (TimeoutException ex)
 {
