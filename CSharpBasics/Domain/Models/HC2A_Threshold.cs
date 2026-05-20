@@ -4,5 +4,7 @@ public record HC2A_Threshold(
     double HumidityMin,
     double HumidityMax,
     double TemperatureMin,
-    double TemperatureMax
+    double TemperatureMax,
+    double MinusDiff,
+    double PlusDiff
 );

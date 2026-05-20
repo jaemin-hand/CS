@@ -8,7 +8,9 @@ var threshold = new HC2A_Threshold(
     30,
     60,
     20,
-    30
+    30,
+    0,
+    0
 );
 
 var alarmResult = new HC2A_AlarmResult(
@@ -21,8 +23,6 @@ var alarmResult = new HC2A_AlarmResult(
 Console.WriteLine($"Humidity range: {threshold.HumidityMin} ~ {threshold.HumidityMax}");
 Console.WriteLine($"Temperature range: {threshold.TemperatureMin} ~ {threshold.TemperatureMax}");
 
-Console.WriteLine($"Alarm: {alarmResult.HasAlarm}");
-Console.WriteLine($"Alarm Message: {alarmResult.Message}");
 
 using var cts = new CancellationTokenSource();
 
@@ -54,6 +54,10 @@ try
         Console.WriteLine($"Temperature: {reading.Temperature}");
         Console.WriteLine($"Measure: {reading.Timestamp}");
         Console.WriteLine($"RawResponse: {reading.RawResponse}");
+        Console.WriteLine($"Temperature alarm: {alarmResult.IsTemperatureAlarm}");
+        Console.WriteLine($"Humidity alarm: {alarmResult.IsHumidityAlarm}");
+        Console.WriteLine($"AlarmMessage: {alarmResult.Message}");
+
         Console.WriteLine();
 
         TimeSpan delay = nextRunAt - DateTimeOffset.UtcNow;
@@ -68,12 +72,53 @@ try
         if (reading.Humidity > threshold.HumidityMax || reading.Humidity < threshold.HumidityMin)
         {
             alarmResult = alarmResult with { IsHumidityAlarm = true };
-            alarmResult = alarmResult with { HasAlarm = true };
+            alarmResult = alarmResult with { Message = "HumidityAlarm!" };
+            if (reading.Humidity > threshold.HumidityMax)
+            {
+                threshold = threshold with { PlusDiff = reading.Humidity - threshold.HumidityMax };
+            }
+            else if (reading.Humidity < threshold.HumidityMin)
+            {
+                threshold = threshold with { MinusDiff = threshold.HumidityMin - reading.Humidity };
+            }
+            else
+            {
+                threshold = threshold with { MinusDiff = 0 };
+                threshold = threshold with { PlusDiff = 0 };
+            }
         }
-        else if (reading.Temperature > threshold.TemperatureMax || reading.Temperature < threshold.HumidityMin)
+        else
+        {
+            alarmResult = alarmResult with { IsHumidityAlarm = false };
+            alarmResult = alarmResult with { Message = "Normal" };
+
+            threshold = threshold with { MinusDiff = 0 };
+            threshold = threshold with { PlusDiff = 0 };
+        }
+        if (reading.Temperature > threshold.TemperatureMax || reading.Temperature < threshold.TemperatureMin)
         {
             alarmResult = alarmResult with { IsTemperatureAlarm = true};
-            alarmResult = alarmResult with { HasAlarm = true };
+            alarmResult = alarmResult with { Message = "TemperatureAlarm!" };
+
+            if (reading.Temperature > threshold.TemperatureMax)
+            {
+                threshold = threshold with { PlusDiff = reading.Temperature - threshold.TemperatureMax };
+            }
+            else if (reading.Temperature < threshold.TemperatureMin)
+            {
+                threshold = threshold with { MinusDiff = threshold.TemperatureMin - reading.Temperature };
+            }
+            else
+            {
+                threshold = threshold with { MinusDiff = 0 };
+                threshold = threshold with { PlusDiff = 0 };
+            }
+        }
+        else
+        {
+            alarmResult = alarmResult with { IsTemperatureAlarm = false };
+            if (alarmResult.Message != "HumidityAlarm!")
+            alarmResult = alarmResult with { Message = "Normal" };
         }
         
     }
