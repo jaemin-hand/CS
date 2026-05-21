@@ -72,7 +72,11 @@ try
         if (reading.Humidity > threshold.HumidityMax || reading.Humidity < threshold.HumidityMin)
         {
             alarmResult = alarmResult with { IsHumidityAlarm = true };
-            alarmResult = alarmResult with { Message = "HumidityAlarm!" };
+            
+            if (alarmResult.Message != "TemperatureAlarm!")
+            {
+                alarmResult = alarmResult with { Message = "HumdiityAlarm!" };
+            }
             if (reading.Humidity > threshold.HumidityMax)
             {
                 threshold = threshold with { PlusDiff = reading.Humidity - threshold.HumidityMax };
