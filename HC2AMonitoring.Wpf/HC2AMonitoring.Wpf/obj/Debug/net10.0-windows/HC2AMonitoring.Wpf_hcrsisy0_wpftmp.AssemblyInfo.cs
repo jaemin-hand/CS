@@ -10,13 +10,15 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("CSharpBasics")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("HC2AMonitoring.Wpf")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+862a76572d130b5f5404709cda0bbd0a3e48779f")]
-[assembly: System.Reflection.AssemblyProductAttribute("CSharpBasics")]
-[assembly: System.Reflection.AssemblyTitleAttribute("CSharpBasics")]
+[assembly: System.Reflection.AssemblyProductAttribute("HC2AMonitoring.Wpf")]
+[assembly: System.Reflection.AssemblyTitleAttribute("HC2AMonitoring.Wpf")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
+[assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows7.0")]
+[assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("Windows7.0")]
 
 // MSBuild WriteCodeFragment 클래스에서 생성되었습니다.
 

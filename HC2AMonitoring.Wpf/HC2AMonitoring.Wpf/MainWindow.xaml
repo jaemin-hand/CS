@@ -1,0 +1,67 @@
+﻿<Window x:Class="HC2AMonitoring.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HC2AMonitoring.Wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Margin="20">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+    <TextBlock Grid.Row="0"
+               Text="HC2A Monitoring"
+               FontSize="24"
+               FontWeight="Bold"
+               Margin="0 0 0 20"/>
+
+    <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0 0 0 10">
+        <TextBlock Text="Humidity Min" Width="120" VerticalAlignment="Center"/>
+        <TextBox Width="100" Text="30"/>
+        <TextBlock Text="%RH" Margin="8 0 0 0" VerticalAlignment="Center"/>
+    </StackPanel>
+
+    <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 0 0 10">
+        <TextBlock Text="Humidity Max" Width="120" VerticalAlignment="Center"/>
+        <TextBox Width="100" Text="60"/>
+        <TextBlock Text="%RH" Margin="8 0 0 0" VerticalAlignment="Center"/>
+    </StackPanel>
+
+    <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0 0 0 10">
+        <TextBlock Text="Temperature Min" Width="120" VerticalAlignment="Center"/>
+        <TextBox Width="100" Text="20"/>
+        <TextBlock Text="C" Margin="8 0 0 0" VerticalAlignment="Center"/>
+    </StackPanel>
+
+    <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0 0 0 20">
+        <TextBlock Text="Temperature Max" Width="120" VerticalAlignment="Center"/>
+        <TextBox Width="100" Text="30"/>
+        <TextBlock Text="C" Margin="8 0 0 0" VerticalAlignment="Center"/>
+    </StackPanel>
+
+    <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="0 0 0 20">
+        <Button Content="Start" Width="100" Margin="0 0 10 0"/>
+        <Button Content="Stop" Width="100"/>
+    </StackPanel>
+
+    <StackPanel Grid.Row="6">
+        <TextBlock Text="Current Humidity: -" FontSize="16" Margin="0 0 0 8"/>
+        <TextBlock Text="Current Temperature: -" FontSize="16" Margin="0 0 0 8"/>
+        <TextBlock Text="Connection: Disconnected" FontSize="16" Margin="0 0 0 8"/>
+        <TextBlock Text="Alarm: -" FontSize="16" Margin="0 0 0 8"/>
+        <TextBlock Text="Raw Response:" FontSize="16" Margin="0 10 0 4"/>
+        <TextBox Height="80"
+                 TextWrapping="Wrap"
+                 AcceptsReturn="True"
+                 IsReadOnly="True"/>
+    </StackPanel>
+</Grid>
+</Window>
