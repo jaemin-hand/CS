@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "7K8bJtmAcS4=",
+  "dgSpecHash": "WjJuNCtcAp8=",
   "success": true,
   "projectFilePath": "C:\\Users\\thswo\\Desktop\\CS\\CSharpBasics\\CSharpBasics.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\thswo\\.nuget\\packages\\microsoft.data.sqlite\\10.0.8\\microsoft.data.sqlite.10.0.8.nupkg.sha512",
+    "C:\\Users\\thswo\\.nuget\\packages\\microsoft.data.sqlite.core\\10.0.8\\microsoft.data.sqlite.core.10.0.8.nupkg.sha512",
     "C:\\Users\\thswo\\.nuget\\packages\\runtime.android-arm.runtime.native.system.io.ports\\10.0.8\\runtime.android-arm.runtime.native.system.io.ports.10.0.8.nupkg.sha512",
     "C:\\Users\\thswo\\.nuget\\packages\\runtime.android-arm64.runtime.native.system.io.ports\\10.0.8\\runtime.android-arm64.runtime.native.system.io.ports.10.0.8.nupkg.sha512",
     "C:\\Users\\thswo\\.nuget\\packages\\runtime.android-x64.runtime.native.system.io.ports\\10.0.8\\runtime.android-x64.runtime.native.system.io.ports.10.0.8.nupkg.sha512",
@@ -21,6 +23,10 @@
     "C:\\Users\\thswo\\.nuget\\packages\\runtime.native.system.io.ports\\10.0.8\\runtime.native.system.io.ports.10.0.8.nupkg.sha512",
     "C:\\Users\\thswo\\.nuget\\packages\\runtime.osx-arm64.runtime.native.system.io.ports\\10.0.8\\runtime.osx-arm64.runtime.native.system.io.ports.10.0.8.nupkg.sha512",
     "C:\\Users\\thswo\\.nuget\\packages\\runtime.osx-x64.runtime.native.system.io.ports\\10.0.8\\runtime.osx-x64.runtime.native.system.io.ports.10.0.8.nupkg.sha512",
+    "C:\\Users\\thswo\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.11\\sqlitepclraw.bundle_e_sqlite3.2.1.11.nupkg.sha512",
+    "C:\\Users\\thswo\\.nuget\\packages\\sqlitepclraw.core\\2.1.11\\sqlitepclraw.core.2.1.11.nupkg.sha512",
+    "C:\\Users\\thswo\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.11\\sqlitepclraw.lib.e_sqlite3.2.1.11.nupkg.sha512",
+    "C:\\Users\\thswo\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.11\\sqlitepclraw.provider.e_sqlite3.2.1.11.nupkg.sha512",
     "C:\\Users\\thswo\\.nuget\\packages\\system.io.ports\\10.0.8\\system.io.ports.10.0.8.nupkg.sha512"
   ],
   "logs": []
