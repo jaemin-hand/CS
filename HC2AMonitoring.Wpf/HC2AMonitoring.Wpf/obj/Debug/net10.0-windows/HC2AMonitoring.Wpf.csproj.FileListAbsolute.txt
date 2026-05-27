@@ -71,3 +71,11 @@ C:\Users\thswo\Desktop\CS\HC2AMonitoring.Wpf\HC2AMonitoring.Wpf\bin\Debug\net10.
 C:\Users\thswo\Desktop\CS\HC2AMonitoring.Wpf\HC2AMonitoring.Wpf\bin\Debug\net10.0-windows\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\thswo\Desktop\CS\HC2AMonitoring.Wpf\HC2AMonitoring.Wpf\bin\Debug\net10.0-windows\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\thswo\Desktop\CS\HC2AMonitoring.Wpf\HC2AMonitoring.Wpf\bin\Debug\net10.0-windows\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\thswo\Desktop\CS\_build\hc2a-wpf\CSharpBasics.deps.json
+C:\Users\thswo\Desktop\CS\_build\hc2a-wpf\CSharpBasics.runtimeconfig.json
+C:\Users\thswo\Desktop\CS\_build\hc2a-wpf\CSharpBasics.exe
+C:\Users\thswo\Desktop\CS\_build\hc2a-wpf\HC2AMonitoring.Wpf.exe
+C:\Users\thswo\Desktop\CS\_build\hc2a-wpf\HC2AMonitoring.Wpf.deps.json
+C:\Users\thswo\Desktop\CS\_build\hc2a-wpf\HC2AMonitoring.Wpf.runtimeconfig.json
+C:\Users\thswo\Desktop\CS\_build\hc2a-wpf\HC2AMonitoring.Wpf.dll
+C:\Users\thswo\Desktop\CS\_build\hc2a-wpf\HC2AMonitoring.Wpf.pdb

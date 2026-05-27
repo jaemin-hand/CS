@@ -104,10 +104,15 @@
 
                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
                         <TextBlock Text="DB 저장 상태" Foreground="#A7B0C0"/>
-                        <TextBlock Text="기록 중"
+                        <TextBlock x:Name="DatabaseStatusTextBlock"
+                                   Text="확인 중"
                                    Foreground="#7BE08A"
                                    FontSize="28"
                                    FontWeight="SemiBold"/>
+                        <TextBlock x:Name="DatabaseCountTextBlock"
+                                   Text="저장 0건"
+                                   Foreground="#A7B0C0"
+                                   Margin="0 4 0 0"/>
                     </StackPanel>
 
                     <StackPanel Grid.Column="2" VerticalAlignment="Center">

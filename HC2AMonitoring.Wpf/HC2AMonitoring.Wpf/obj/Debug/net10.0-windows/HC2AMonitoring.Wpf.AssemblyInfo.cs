@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HC2AMonitoring.Wpf")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+20bce448e455619d3054c2d754f3b6ac62160f51")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e4bb797b53ed7762d3275478f260f2b9213b3bd7")]
 [assembly: System.Reflection.AssemblyProductAttribute("HC2AMonitoring.Wpf")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HC2AMonitoring.Wpf")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
